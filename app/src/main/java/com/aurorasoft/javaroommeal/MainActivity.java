@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("rendi: ", response.toString());
                         String id, nama, image;
 
-
                         try {
                             JSONArray jsonArray = response.getJSONArray("results");
 

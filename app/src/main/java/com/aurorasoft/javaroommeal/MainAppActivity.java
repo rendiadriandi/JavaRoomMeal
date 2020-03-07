@@ -11,4 +11,8 @@ public class MainAppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_app);
     }
+
+    void showRecyclerView(){
+
+    }
 }
