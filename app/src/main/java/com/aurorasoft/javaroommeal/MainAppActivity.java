@@ -9,11 +9,7 @@ import android.os.Bundle;
 import java.util.List;
 
 public class MainAppActivity extends AppCompatActivity {
-
     DataAdapter adapter;
-
-    //panggil DB
-    static MyDatabase db;
 
     List<Data> datas;
 
@@ -26,16 +22,14 @@ public class MainAppActivity extends AppCompatActivity {
     }
 
     void showRecyclerView(){
-
         RecyclerView view = (RecyclerView) findViewById(R.id.rv_meal);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         view.setLayoutManager(linearLayoutManager);
 
-        datas = db.dataDao().getAll(); //ambil semua data
+        datas = MainActivity.db.dataDao().getAll(); //ambil semua data
 
         adapter = new DataAdapter(datas, this);
         view.setAdapter(adapter);
+
     }
-
-
 }
