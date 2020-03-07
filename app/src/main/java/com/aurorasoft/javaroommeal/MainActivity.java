@@ -52,28 +52,26 @@ public class MainActivity extends AppCompatActivity {
                         String id, nama, image;
 
                         try {
-                            JSONArray jsonArray = response.getJSONArray("results");
+                            JSONArray jsonArray = response.getJSONArray("meals");
 
                             if (jsonArray.length() != 0) {
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject data = jsonArray.getJSONObject(i);
 
-                                    id = data.getString("id").toString().trim();
-                                    nama = data.getString("nama").toString().trim();
-                                    image = data.getString("image").toString().trim();
+                                    id = data.getString("idMeal").toString().trim();
+                                    nama = data.getString("strMeal").toString().trim();
+                                    image = data.getString("strMealThumb").toString().trim();
 
                                     db.dataDao().insertAll(new Data(nama, image));
                                 }
 
-                                Intent i = new Intent(MainActivity.this,MainAppActivity.class);
+                                Intent i = new Intent(getApplicationContext(), MainAppActivity.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                MainActivity.this.startActivity(i);
+                                getApplicationContext().startActivity(i);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-                        pb.setVisibility(ProgressBar.GONE);
                     }
                 }, new Response.ErrorListener() {
 
