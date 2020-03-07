@@ -47,7 +47,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.CardViewHolder
         holder.tvNama.setText(nama);
         Glide.with(context)
                 .load("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood"+image)
-                .into(imgIm)
+                .into(holder.imgImage);
     }
 
     @Override
