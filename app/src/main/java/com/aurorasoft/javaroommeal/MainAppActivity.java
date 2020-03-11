@@ -1,6 +1,7 @@
 package com.aurorasoft.javaroommeal;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,8 +24,10 @@ public class MainAppActivity extends AppCompatActivity {
 
     void showRecyclerView(){
         RecyclerView view = (RecyclerView) findViewById(R.id.rv_meal);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        view.setLayoutManager(linearLayoutManager);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
+        view.setLayoutManager(mLayoutManager);
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+//        view.setLayoutManager(linearLayoutManager);
 
         datas = MainActivity.db.dataDao().getAll(); //ambil semua data
 

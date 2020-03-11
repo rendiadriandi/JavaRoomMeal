@@ -47,7 +47,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.CardViewHolder
         holder.tvNama.setText(nama);
 
         Glide.with(context)
-                .load("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood"+image)
+                .load(image)
                 .into(holder.imgImage);
     }
 
@@ -61,8 +61,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.CardViewHolder
 
         public CardViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvNama = (TextView) itemView.findViewById(R.id.tv_nama);
-            imgImage = (ImageView) itemView.findViewById(R.id.img_image);
+            tvNama = (TextView) itemView.findViewById(R.id.tx_meal);
+            imgImage = (ImageView) itemView.findViewById(R.id.im_meal);
         }
     }
 }

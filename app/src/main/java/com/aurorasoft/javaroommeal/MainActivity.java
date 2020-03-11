@@ -19,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     ProgressBar pb;
@@ -35,6 +37,18 @@ public class MainActivity extends AppCompatActivity {
                 MyDatabase.class, "database")
                 .allowMainThreadQueries()
                 .build();
+
+        //cek data
+
+        List<Data> datas = db.dataDao().getAll();
+
+        if (datas.size() > 0) {
+            Intent i = new Intent(getApplicationContext(), MainAppActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            getApplicationContext().startActivity(i);
+            finish();
+            return;
+        }
 
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
         String url = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood";
@@ -68,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                                 Intent i = new Intent(getApplicationContext(), MainAppActivity.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 getApplicationContext().startActivity(i);
+                                finish();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
